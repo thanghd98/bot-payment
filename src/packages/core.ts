@@ -1,5 +1,4 @@
 import { Bot } from "grammy";
-import { get } from "lodash-es";
 import { RequestPaymentParams } from "../types";
 
 export class Coin98Payment{
@@ -17,11 +16,11 @@ export class Coin98Payment{
 
     try {
         const message = await this.bot.api.sendInvoice(chatId,
-            get(product, 'title'),
-            get(product, 'description'),
-            get(product, 'payload', ''),
-            get(product, 'currency'),
-            get(product, 'variants'),
+            product?.title,
+            product?.description,
+            product?.payload || '',
+            product?.currency,
+            product?.variants,
             others
         )
 
@@ -58,7 +57,7 @@ export class Coin98Payment{
 
   checkStatusPayment(){
     this.bot.command("status", (ctx) => {
-        const message = this.paidUsers.has(get(ctx, 'from.id') as number)
+        const message = this.paidUsers.has(ctx?.from?.id as number)
           ? "You have paid"
           : "You have not paid yet";
         return ctx.reply(message);

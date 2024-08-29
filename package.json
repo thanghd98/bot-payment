@@ -46,7 +46,6 @@
   ],
   "devDependencies": {
     "@size-limit/preset-small-lib": "^11.1.4",
-    "@types/lodash-es": "^4.17.12",
     "husky": "^9.1.5",
     "size-limit": "^11.1.4",
     "tsdx": "^0.14.1",
@@ -54,7 +53,6 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
-    "grammy": "^1.29.0",
-    "lodash-es": "^4.17.21"
+    "grammy": "^1.29.0"
   }
 }
