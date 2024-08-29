@@ -47,7 +47,6 @@ export class Coin98Payment{
 
   onPaymentSuccessful(){
     this.bot.on("message:successful_payment", (ctx) => {
-        console.log("🚀 ~ Coin98Payment ~ this.bot.on ~ ctx:", ctx)
         //send notification
 
         if (!ctx.message || !ctx.message.successful_payment || !ctx.from) {
