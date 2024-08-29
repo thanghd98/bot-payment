@@ -13,7 +13,6 @@ export class Coin98Payment{
   }
 
   async sendInvoice(params: RequestPaymentParams){
-    console.log("🚀 ~ Coin98Payment ~ sendInvoice ~ params:", params)
     const { chatId, product, others } = params
 
     try {
@@ -21,7 +20,7 @@ export class Coin98Payment{
         const message = await this.bot.api.sendInvoice(chatId,
             product?.title,
             product?.description,
-            product?.payload || '',
+            product?.payload || '{}',
             product?.currency,
             product?.variants,
             {
@@ -48,6 +47,7 @@ export class Coin98Payment{
 
   onPaymentSuccessful(){
     this.bot.on("message:successful_payment", (ctx) => {
+        console.log("🚀 ~ Coin98Payment ~ this.bot.on ~ ctx:", ctx)
         //send notification
 
         if (!ctx.message || !ctx.message.successful_payment || !ctx.from) {
