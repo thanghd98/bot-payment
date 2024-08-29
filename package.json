@@ -1,0 +1,60 @@
+{
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
+  },
+  "peerDependencies": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "coin98_telegram_payment",
+  "author": "thanghoduc",
+  "module": "dist/coin98_telegram_payment.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/coin98_telegram_payment.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/coin98_telegram_payment.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^11.1.4",
+    "@types/lodash-es": "^4.17.12",
+    "husky": "^9.1.5",
+    "size-limit": "^11.1.4",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.7.0",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "grammy": "^1.29.0",
+    "lodash-es": "^4.17.21"
+  }
+}
