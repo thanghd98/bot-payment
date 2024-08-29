@@ -13,16 +13,21 @@ export class Coin98Payment{
   }
 
   async sendInvoice(params: RequestPaymentParams){
+    console.log("🚀 ~ Coin98Payment ~ sendInvoice ~ params:", params)
     const { chatId, product, others } = params
 
     try {
+
         const message = await this.bot.api.sendInvoice(chatId,
             product?.title,
             product?.description,
             product?.payload || '',
             product?.currency,
             product?.variants,
-            others
+            {
+                photo_url: others.photo_url,
+                start_parameter: others.start_parameter
+            }
         )
 
         return message
