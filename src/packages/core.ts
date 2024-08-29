@@ -8,6 +8,7 @@ export class Coin98Payment{
 
   constructor(tokenId: string){
     this.bot = new Bot(tokenId );
+    this.bot.start()
     this.paidUsers = new Map<number, string>()
   }
 
