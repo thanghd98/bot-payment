@@ -46,6 +46,7 @@
   ],
   "devDependencies": {
     "@size-limit/preset-small-lib": "^11.1.4",
+    "@types/paho-mqtt": "^1.0.10",
     "husky": "^9.1.5",
     "size-limit": "^11.1.4",
     "tsdx": "^0.14.1",
@@ -53,6 +54,7 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
-    "grammy": "^1.29.0"
+    "grammy": "^1.29.0",
+    "paho-mqtt": "^1.1.0"
   }
 }

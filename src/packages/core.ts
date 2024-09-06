@@ -1,15 +1,18 @@
 import { Bot } from "grammy";
 import { RequestPaymentParams } from "../types";
+import { MqttService } from "./notification";
 
 export class Coin98Payment{
   private bot: Bot
   //recommend use db for production
   private paidUsers: Map<number, string>;
+  private mqttServices: MqttService
 
   constructor(tokenId: string){
     this.bot = new Bot(tokenId );
     this.bot.start()
     this.paidUsers = new Map<number, string>()
+    this.mqttServices = new MqttService({clientId: '', requestUrl: ''})
   }
 
   async sendInvoice(params: RequestPaymentParams){
@@ -48,10 +51,12 @@ export class Coin98Payment{
   onPaymentSuccessful(){
     this.bot.on("message:successful_payment", (ctx) => {
         //send notification
-
+        
         if (!ctx.message || !ctx.message.successful_payment || !ctx.from) {
           return;
         }
+
+        this.mqttServices.sendMessage('payment', 'Thành công rồi á nha')
       
         this.paidUsers.set(
           ctx.from.id,
